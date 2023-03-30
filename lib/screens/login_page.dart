@@ -32,6 +32,8 @@ class _login_pageState extends State<login_page> {
             ),
           ),
           Center(
+              child: SingleChildScrollView(
+            padding: EdgeInsets.all(5),
             child: Card(
               margin: const EdgeInsets.only(left: 20, right: 20, top: 250),
               child: Padding(
@@ -41,17 +43,22 @@ class _login_pageState extends State<login_page> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
-                        decoration: InputDecoration(labelText: "Usuario")),
+                        decoration:
+                            const InputDecoration(labelText: "Usuario")),
                     const SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     TextFormField(
-                      decoration: InputDecoration(labelText: "Contraseña"),
+                      decoration:
+                          const InputDecoration(labelText: "Contraseña"),
                       obscureText: true,
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 25),
+                        padding: const EdgeInsets.symmetric(vertical: 25),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -69,9 +76,6 @@ class _login_pageState extends State<login_page> {
                         ],
                       ),
                       onPressed: () => _login(context),
-                    ),
-                    const SizedBox(
-                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +95,7 @@ class _login_pageState extends State<login_page> {
                 ),
               ),
             ),
-          )
+          ))
         ],
       ),
     );
