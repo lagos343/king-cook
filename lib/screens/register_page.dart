@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:king_cook/screens/register_page.dart';
 
+import 'login_page.dart';
+
+//variable paara verificar si esta cargando el registro
 var _loading = false;
 
-// ignore: camel_case_types
-class login_page extends StatefulWidget {
-  const login_page({super.key});
+class register_page extends StatefulWidget {
+  const register_page({super.key});
 
   @override
-  State<login_page> createState() => _login_pageState();
+  State<register_page> createState() => _register_pageState();
 }
 
-// ignore: camel_case_types
-class _login_pageState extends State<login_page> {
+class _register_pageState extends State<register_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +57,14 @@ class _login_pageState extends State<login_page> {
                     const SizedBox(
                       height: 20,
                     ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                          labelText: "Verificar Contraseña"),
+                      obscureText: true,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 25),
@@ -64,7 +72,7 @@ class _login_pageState extends State<login_page> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          const Text("Iniciar Sesion"),
+                          const Text("Registrar"),
                           if (_loading)
                             Container(
                               height: 20,
@@ -76,22 +84,22 @@ class _login_pageState extends State<login_page> {
                             )
                         ],
                       ),
-                      onPressed: () => _login(context),
+                      onPressed: () => _register(context),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: <Widget>[
-                        const Text("¿No estas registrado?"),
+                        const Text("¿Ya tienes una cuenta?"),
                         TextButton(
                           style: ButtonStyle(
                               foregroundColor: MaterialStateColor.resolveWith(
                                   (states) => Color.fromRGBO(77, 208, 225, 1))),
                           onPressed: () {
                             Navigator.pushNamedAndRemoveUntil(
-                                context, '/register', (route) => false);
+                                context, '/', (route) => false);
                           },
-                          child: Text("Registrarse"),
+                          child: Text("Inicia Sesion"),
                         )
                       ],
                     )
@@ -105,7 +113,7 @@ class _login_pageState extends State<login_page> {
     );
   }
 
-  void _login(BuildContext context) {
+  void _register(BuildContext context) {
     if (!_loading) {
       setState(() {
         _loading = true;
