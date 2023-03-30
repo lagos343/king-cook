@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+var _loading = false;
+
 // ignore: camel_case_types
 class login_page extends StatefulWidget {
   const login_page({super.key});
@@ -39,7 +41,51 @@ class _login_pageState extends State<login_page> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
-                      decoration: InputDecoration(labelText: "Usuario"),
+                        decoration: InputDecoration(labelText: "Usuario")),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: "Contraseña"),
+                      obscureText: true,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 25),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Text("Iniciar Sesion"),
+                          if (_loading)
+                            Container(
+                              height: 20,
+                              width: 20,
+                              margin: const EdgeInsets.only(left: 20),
+                              child: const CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            )
+                        ],
+                      ),
+                      onPressed: () => _login(context),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: <Widget>[
+                        const Text("¿No estas registrado?"),
+                        TextButton(
+                          style: ButtonStyle(
+                              foregroundColor: MaterialStateColor.resolveWith(
+                                  (states) => Color.fromRGBO(77, 208, 225, 1))),
+                          onPressed: () {},
+                          child: Text("Registrarse"),
+                        )
+                      ],
                     )
                   ],
                 ),
@@ -49,5 +95,13 @@ class _login_pageState extends State<login_page> {
         ],
       ),
     );
+  }
+
+  void _login(BuildContext context) {
+    if (!_loading) {
+      setState(() {
+        _loading = true;
+      });
+    }
   }
 }
