@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "751096778547",
+    "project_id": "kign-cook",
+    "storage_bucket": "kign-cook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751096778547:android:203addf83db5452b42f846",
+        "android_client_info": {
+          "package_name": "com.example.king_cook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751096778547-imvl340hout59d7llhc3q7vdamtjko0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2DqOIZU67Ngh2rgkiADfPJEnLqRqpEsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751096778547-imvl340hout59d7llhc3q7vdamtjko0c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751096778547:android:5fc5a7619d3a72fa42f846",
+        "android_client_info": {
+          "package_name": "com.example.proyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751096778547-imvl340hout59d7llhc3q7vdamtjko0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2DqOIZU67Ngh2rgkiADfPJEnLqRqpEsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751096778547-imvl340hout59d7llhc3q7vdamtjko0c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

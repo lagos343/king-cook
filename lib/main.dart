@@ -1,8 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:king_cook/puente.dart';
+import 'package:king_cook/screens/home_screen.dart';
 import 'package:king_cook/screens/login_page.dart';
+import 'package:king_cook/screens/mas.dart';
+import 'package:king_cook/screens/otra.dart';
+import 'package:king_cook/screens/photo_upload.dart';
 import 'package:king_cook/screens/register_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  await initializeDateFormatting('es_ES', null);
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -26,5 +36,9 @@ class MyApp extends StatelessWidget {
   final _rutas = {
     '/': (context) => const login_page(),
     '/register': (context) => const register_page(),
+    '/puente': (context) => const Puente(
+          namelocal: 'home',
+        ),
+    '/photoupload': (context) => const PhotoUpload()
   };
 }

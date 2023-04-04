@@ -76,7 +76,11 @@ class _login_pageState extends State<login_page> {
                             )
                         ],
                       ),
-                      onPressed: () => _login(context),
+                      onPressed: () {
+                        _login(context);
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/puente', (route) => false);
+                      },
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
