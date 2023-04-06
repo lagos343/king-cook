@@ -44,8 +44,7 @@ class _login_pageState extends State<login_page> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
-                        decoration:
-                            const InputDecoration(labelText: "Usuario")),
+                        decoration: const InputDecoration(labelText: "Email")),
                     const SizedBox(
                       height: 20,
                     ),

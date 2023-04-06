@@ -44,8 +44,12 @@ class _register_pageState extends State<register_page> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
-                        decoration:
-                            const InputDecoration(labelText: "Usuario")),
+                        decoration: const InputDecoration(labelText: "Email")),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                        decoration: const InputDecoration(labelText: "Nombre")),
                     const SizedBox(
                       height: 20,
                     ),

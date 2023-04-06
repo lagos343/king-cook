@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:king_cook/puente.dart';
 import 'package:king_cook/screens/home_screen.dart';
 import 'package:king_cook/screens/login_page.dart';
-import 'package:king_cook/screens/mas.dart';
-import 'package:king_cook/screens/otra.dart';
 import 'package:king_cook/screens/photo_upload.dart';
 import 'package:king_cook/screens/register_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
