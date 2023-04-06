@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:king_cook/screens/otra.dart';
 import 'package:king_cook/screens/photo_upload.dart';
 import 'package:rive/rive.dart';
 import 'package:king_cook/components/side_menu.dart';

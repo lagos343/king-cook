@@ -1,5 +1,3 @@
-import 'package:king_cook/screens/mas.dart';
-import 'package:king_cook/screens/otra.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
 
