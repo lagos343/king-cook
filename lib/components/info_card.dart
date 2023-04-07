@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:king_cook/users.dart';
+import 'package:kingcook/users.dart';
 
 //Informacion del Usuario
 class InfoCard extends StatelessWidget {

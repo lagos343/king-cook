@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:king_cook/components/info_card.dart';
-import 'package:king_cook/screens/home_screen.dart';
+import 'package:kingcook/components/info_card.dart';
+import 'package:kingcook/screens/home_screen.dart';
 import 'package:rive/rive.dart';
-import 'package:king_cook/components/side_menu_tile.dart';
-import 'package:king_cook/models/rive_assets.dart';
-import 'package:king_cook/utils/rive_utils.dart';
+import 'package:kingcook/components/side_menu_tile.dart';
+import 'package:kingcook/models/rive_assets.dart';
+import 'package:kingcook/utils/rive_utils.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});

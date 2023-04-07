@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:king_cook/users.dart';
+import 'package:kingcook/users.dart';
 
 class Auth {
   Future<bool> authUser(String email, String password) async {

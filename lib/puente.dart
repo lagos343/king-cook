@@ -1,12 +1,12 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:king_cook/screens/photo_upload.dart';
+import 'package:kingcook/screens/photo_upload.dart';
 import 'package:rive/rive.dart';
-import 'package:king_cook/components/side_menu.dart';
-import 'package:king_cook/constants.dart';
-import 'package:king_cook/screens/home_screen.dart';
-import 'package:king_cook/models/menu_btn.dart';
-import 'package:king_cook/utils/rive_utils.dart';
+import 'package:kingcook/components/side_menu.dart';
+import 'package:kingcook/constants.dart';
+import 'package:kingcook/screens/home_screen.dart';
+import 'package:kingcook/models/menu_btn.dart';
+import 'package:kingcook/utils/rive_utils.dart';
 
 class Puente extends StatefulWidget {
   final String namelocal;

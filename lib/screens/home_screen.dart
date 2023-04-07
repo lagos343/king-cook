@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:king_cook/screens/photo_upload.dart';
-import 'package:king_cook/screens/posts.dart';
+import 'package:kingcook/screens/photo_upload.dart';
+import 'package:kingcook/screens/posts.dart';
 
 class HomePage extends StatefulWidget {
   @override

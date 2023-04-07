@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import 'package:king_cook/models/rive_assets.dart';
+import 'package:kingcook/models/rive_assets.dart';
 
 //Las opciones de las que dispondra el usuario
 class SideMenuTile extends StatelessWidget {

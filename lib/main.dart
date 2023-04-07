@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:king_cook/puente.dart';
-import 'package:king_cook/screens/home_screen.dart';
-import 'package:king_cook/screens/login_page.dart';
-import 'package:king_cook/screens/photo_upload.dart';
-import 'package:king_cook/screens/register_page.dart';
+import 'package:kingcook/puente.dart';
+import 'package:kingcook/screens/home_screen.dart';
+import 'package:kingcook/screens/login_page.dart';
+import 'package:kingcook/screens/photo_upload.dart';
+import 'package:kingcook/screens/register_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {

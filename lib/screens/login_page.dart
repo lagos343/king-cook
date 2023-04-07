@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:king_cook/screens/register_page.dart';
-import 'package:king_cook/auth/auth.dart';
+import 'package:kingcook/screens/register_page.dart';
+import 'package:kingcook/auth/auth.dart';
 
 var _loading = false;
 var auth = Auth();

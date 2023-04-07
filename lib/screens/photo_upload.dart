@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
-import 'package:king_cook/screens/home_screen.dart';
-import 'package:king_cook/users.dart';
+import 'package:kingcook/screens/home_screen.dart';
+import 'package:kingcook/users.dart';
 
 class PhotoUpload extends StatefulWidget {
   const PhotoUpload({super.key});
