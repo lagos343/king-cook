@@ -146,7 +146,6 @@ class _register_pageState extends State<register_page> {
           const SnackBar(
               content: Text("Por favor, ingrese todos los datos requieridos")),
         );
-        return;
       } else if (password.length < 6) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -158,7 +157,6 @@ class _register_pageState extends State<register_page> {
               content:
                   Text("Las contraseña y su confirmacion deben ser iguales")),
         );
-        return;
       } else {
         if (await auth.registerUser(email, name, password)) {
           ScaffoldMessenger.of(context).showSnackBar(

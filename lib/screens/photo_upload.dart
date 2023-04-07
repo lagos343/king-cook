@@ -27,6 +27,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
       appBar: AppBar(
         title: const Text("Subir Receta"),
         centerTitle: true,
+        backgroundColor: Color.fromRGBO(0, 131, 143, 1),
       ),
       body: Center(
         child: sampleImage == null
@@ -35,6 +36,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: getImage,
+        backgroundColor: Color.fromRGBO(0, 131, 143, 1),
         tooltip: "Añadir Imagen",
         child: const Icon(Icons.add_a_photo),
       ),
