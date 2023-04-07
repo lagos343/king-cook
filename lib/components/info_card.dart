@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:king_cook/users.dart';
+
 //Informacion del Usuario
 class InfoCard extends StatelessWidget {
   const InfoCard({
-    super.key, 
+    super.key,
     required this.name,
   });
   final String name;
@@ -19,9 +21,9 @@ class InfoCard extends StatelessWidget {
         ),
       ),
       title: Text(
-        name, //Nombre del usuario
+        Usuarios.nombre, //Nombre del usuario
         style: const TextStyle(color: Colors.white),
-        ), 
+      ),
     );
   }
 }

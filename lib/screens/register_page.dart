@@ -13,6 +13,12 @@ class register_page extends StatefulWidget {
 }
 
 class _register_pageState extends State<register_page> {
+  //controladores
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final passwordController2 = TextEditingController();
+  final nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,16 +50,19 @@ class _register_pageState extends State<register_page> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
+                        controller: emailController,
                         decoration: const InputDecoration(labelText: "Email")),
                     const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
+                        controller: nameController,
                         decoration: const InputDecoration(labelText: "Nombre")),
                     const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
+                      controller: passwordController,
                       decoration:
                           const InputDecoration(labelText: "Contraseña"),
                       obscureText: true,
@@ -62,6 +71,7 @@ class _register_pageState extends State<register_page> {
                       height: 20,
                     ),
                     TextFormField(
+                      controller: passwordController2,
                       decoration: const InputDecoration(
                           labelText: "Verificar Contraseña"),
                       obscureText: true,
@@ -117,10 +127,58 @@ class _register_pageState extends State<register_page> {
     );
   }
 
-  void _register(BuildContext context) {
+  Future<void> _register(BuildContext context) async {
     if (!_loading) {
       setState(() {
         _loading = true;
+      });
+
+      final String email = emailController.text;
+      final String password = passwordController.text;
+      final String password2 = passwordController2.text;
+      final String name = nameController.text;
+
+      if (email.isEmpty ||
+          password.isEmpty ||
+          password2.isEmpty ||
+          name.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text("Por favor, ingrese todos los datos requieridos")),
+        );
+        return;
+      } else if (password.length < 6) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text("La contraseña debe tener al menos 6 carcateres")),
+        );
+      } else if (password2 != password) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content:
+                  Text("Las contraseña y su confirmacion deben ser iguales")),
+        );
+        return;
+      } else {
+        if (await auth.registerUser(email, name, password)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Usuario registrado exitosamente")),
+          );
+          Future.delayed(Duration(seconds: 2)).then((value) {
+            Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+          });
+        } else {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text(
+                    "Ocurrio un problema con el registro, intente de nuevo y revise si su correo es valido")),
+          );
+        }
+      }
+
+      setState(() {
+        _loading = false;
       });
     }
   }

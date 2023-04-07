@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:king_cook/screens/photo_upload.dart';
-//import 'package:king_cook/photoUpload.dart';
 import 'package:king_cook/screens/posts.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,26 +17,16 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    var data;
-    final DatabaseReference postsRef =
-        FirebaseDatabase.instance.ref().child("Posts");
-    postsRef.onValue.listen((event) {
-      DataSnapshot snapshot = event.snapshot;
-      if (snapshot.value != null) {
-        data = snapshot.value as Map<dynamic, dynamic>;
-      }
-      postList.clear();
-      if (data != null) {
-        data.forEach((key, value) {
-          Posts post = Posts(
-              image: value['image'],
-              description: value['description'],
-              date: value['date'],
-              time: value['time']);
-          postList.add(post);
-        });
-      }
-
+    FirebaseFirestore.instance.collection('Posts').get().then((querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        Posts post = Posts(
+            image: doc['image'],
+            description: doc['description'],
+            date: doc['date'],
+            time: doc['time'],
+            name: doc['name']);
+        postList.add(post);
+      });
       setState(() {
         print("${postList.length}");
       });
@@ -60,7 +50,8 @@ class _HomePageState extends State<HomePage> {
                         postList[index].image,
                         postList[index].description,
                         postList[index].date,
-                        postList[index].time);
+                        postList[index].time,
+                        postList[index].name);
                   },
                 ),
         ),
@@ -85,7 +76,8 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
-  Widget postsUI(String image, String description, String date, String time) {
+  Widget postsUI(
+      String image, String description, String date, String time, String name) {
     return Card(
       elevation: 10.0,
       margin: EdgeInsets.all(14.0),
@@ -113,6 +105,14 @@ class _HomePageState extends State<HomePage> {
               height: 10.0,
             ),
             Image.network(image, fit: BoxFit.cover),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text(
+              name,
+              style: Theme.of(context).textTheme.subtitle2,
+              textAlign: TextAlign.left,
+            ),
             SizedBox(
               height: 10.0,
             ),

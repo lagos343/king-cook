@@ -1,36 +1,53 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:king_cook/users.dart';
 
 class Auth {
-
-  bool authUser(String email, String password){
+  Future<bool> authUser(String email, String password) async {
     bool result = false;
-      DocumentReference documentReference = FirebaseFirestore.instance.collection('users').where("email","==",email).where("contrasenia","==",password);
-      documentReference.get().then((DocumentSnapshot documentSnapshot) {
-    result= documentSnapshot.exists;
-    }).catchError((error) {
-      print('Error getting document: $error');
-    });
-  return result;
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .where("email", isEqualTo: email)
+        .where("contrasenia", isEqualTo: password)
+        .get();
+    result = querySnapshot.docs.isNotEmpty;
+
+    if (result) {
+      final usersCollection = FirebaseFirestore.instance.collection('users');
+      final usersQuery = usersCollection.where('email', isEqualTo: email);
+      final usersSnapshot = await usersQuery.get();
+
+      final Map<dynamic, dynamic> usuario = usersSnapshot.docs.first.data();
+      Usuarios.email = usuario['email'].toString();
+      Usuarios.contrasenia = usuario['contrasenia'].toString();
+      Usuarios.nombre = usuario['nombre'].toString();
+    }
+    return result;
   }
 
-  Future<bool> registerUser(Usuarios user){
+  Future<bool> registerUser(
+      String email, String nombre, String contrasenia) async {
     bool result = false;
 
     Map<String, dynamic> data = {
-      'email': user.email,
-      'nombre': user.nombre,
-      'contrasenia':user.contrasenia
+      'email': email,
+      'nombre': nombre,
+      'contrasenia': contrasenia
     };
-  UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: user.email,
-      password: user.contrasenia,
-    );
-    collectionReference.add(data).then((DocumentReference documentReference) {
+
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: contrasenia,
+      );
+      DocumentReference documentReference =
+          await FirebaseFirestore.instance.collection('users').add(data);
       print('Document added with ID: ${documentReference.id}');
-      resultado = true;
-    }).catchError((error) {
-    print('Error adding document: $error');
-    });
-  return result;
+      result = true;
+    } catch (error) {
+      print('Error registering user: $error');
+    }
+    return result;
   }
 }

@@ -58,8 +58,11 @@ class _SideMenuState extends State<SideMenu> {
                       menu.input!.change(true);
                       Future.delayed(const Duration(seconds: 1), () {
                         menu.input!.change(false);
-                        Navigator.pushNamed(
-                            context, menu.pagina); //Para ir a otra pagina
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          menu.pagina,
+                          (route) => false,
+                        ); //Para ir a otra pagina
                       });
                       setState(() {
                         selectedMenu = menu;

@@ -62,10 +62,10 @@ List<RiveAsset> sideMenus = [
     stateMachineName: "SETTINGS_Interactivity",
     title: "Ajustes",
   ),
-  RiveAsset(
-    "assets/RiveAssets/4490-9149-little-icons.riv",
-    artboard: "SIGNOUT",
-    stateMachineName: "state_machine",
-    title: "Salir",
-  ),
+  // RiveAsset(
+  //   "assets/RiveAssets/4490-9149-little-icons.riv",
+  //   artboard: "SIGNOUT",
+  //   stateMachineName: "state_machine",
+  //   title: "Salir",
+  // ),
 ];

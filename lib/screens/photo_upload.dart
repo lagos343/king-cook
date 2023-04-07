@@ -1,10 +1,12 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:king_cook/screens/home_screen.dart';
+import 'package:king_cook/users.dart';
 
 class PhotoUpload extends StatefulWidget {
   const PhotoUpload({super.key});
@@ -143,15 +145,19 @@ class _PhotoUploadState extends State<PhotoUpload> {
     String date = formatDate.format(dbTimeKey);
     String time = formatTime.format(dbTimeKey);
 
-    DatabaseReference ref = FirebaseDatabase.instance.reference();
+    //instancia de la clase Users
+
+    var ref = FirebaseFirestore.instance;
     var data = {
       "image": url,
       "description": _myValue,
       "date": date,
-      "time": time
+      "time": time,
+      "user": Usuarios.email,
+      "name": Usuarios.nombre
     };
 
-    ref.child("Posts").push().set(data);
+    ref.collection("Posts").add(data);
   }
 
   bool validateAndSave() {

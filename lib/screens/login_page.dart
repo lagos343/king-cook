@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:king_cook/screens/register_page.dart';
+import 'package:king_cook/auth/auth.dart';
 
 var _loading = false;
+var auth = Auth();
 
 // ignore: camel_case_types
 class login_page extends StatefulWidget {
@@ -13,6 +15,10 @@ class login_page extends StatefulWidget {
 
 // ignore: camel_case_types
 class _login_pageState extends State<login_page> {
+  //controladores
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +50,14 @@ class _login_pageState extends State<login_page> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
-                        decoration: const InputDecoration(labelText: "Email")),
+                      controller: emailController,
+                      decoration: const InputDecoration(labelText: "Email"),
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
+                      controller: passwordController,
                       decoration:
                           const InputDecoration(labelText: "Contraseña"),
                       obscureText: true,
@@ -77,8 +86,6 @@ class _login_pageState extends State<login_page> {
                       ),
                       onPressed: () {
                         _login(context);
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, '/puente', (route) => false);
                       },
                     ),
                     Row(
@@ -108,10 +115,39 @@ class _login_pageState extends State<login_page> {
     );
   }
 
-  void _login(BuildContext context) {
+  void _login(BuildContext context) async {
     if (!_loading) {
+      final String email = emailController.text;
+      final String password = passwordController.text;
+
+      if (email.isEmpty || password.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text("Por favor, ingrese un email y una contraseña")),
+        );
+        return;
+      }
+
       setState(() {
         _loading = true;
+      });
+
+      if (await auth.authUser(email, password) == true) {
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/puente',
+          (route) => false,
+        );
+      } else {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Email o contraseña incorrectos")),
+        );
+      }
+
+      setState(() {
+        _loading = false;
       });
     }
   }
