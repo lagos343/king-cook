@@ -56,12 +56,11 @@ List<RiveAsset> sideMenus = [
     title: "Mis Recetas",
     //pagina: '/otra',
   ),
-  RiveAsset(
-    "assets/RiveAssets/icons.riv",
-    artboard: "SETTINGS",
-    stateMachineName: "SETTINGS_Interactivity",
-    title: "Ajustes",
-  ),
+  RiveAsset("assets/RiveAssets/icons.riv",
+      artboard: "SETTINGS",
+      stateMachineName: "SETTINGS_Interactivity",
+      title: "Ajustes",
+      pagina: "/userview"),
   // RiveAsset(
   //   "assets/RiveAssets/4490-9149-little-icons.riv",
   //   artboard: "SIGNOUT",

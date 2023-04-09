@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'login_page.dart';
 
 //variable paara verificar si esta cargando el registro

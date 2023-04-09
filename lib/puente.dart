@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:kingcook/screens/photo_upload.dart';
+import 'package:kingcook/screens/view_user.dart';
 import 'package:rive/rive.dart';
 import 'package:kingcook/components/side_menu.dart';
 import 'package:kingcook/constants.dart';
@@ -125,6 +126,10 @@ Widget rutamenu(String name) {
 
     case 'photoupload':
       return PhotoUpload();
+      break;
+
+    case 'userview':
+      return UsuarioScreen();
       break;
 
     default:

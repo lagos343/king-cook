@@ -6,6 +6,7 @@ import 'package:kingcook/screens/login_page.dart';
 import 'package:kingcook/screens/photo_upload.dart';
 import 'package:kingcook/screens/register_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:kingcook/screens/view_user.dart';
 
 void main() async {
   await initializeDateFormatting('es_ES', null);
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
     '/puente': (context) => const Puente(
           namelocal: 'home',
         ),
-    '/photoupload': (context) => const PhotoUpload()
+    '/photoupload': (context) => const PhotoUpload(),
+    '/userview': (context) => const Puente(
+          namelocal: 'userview',
+        ),
   };
 }
