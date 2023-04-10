@@ -116,6 +116,29 @@ class _PhotoUploadState extends State<PhotoUpload> {
 
   void uploadStatusImage() async {
     if (validateAndSave()) {
+      // Mostrar un dialogo con una barra de carga
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text('Subiendo la receta...'),
+              // ignore: sized_box_for_whitespace
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 20,
+                    width: 20,
+                    child: const CircularProgressIndicator(
+                      color: Color.fromRGBO(0, 131, 143, 1),
+                    ),
+                  )
+                ],
+              ));
+        },
+        barrierDismissible: false, // El usuario no puede cerrar el dialogo
+      );
+
       // Subir imagen a firebase storage
       var timeKey = DateTime.now();
       final Reference postImageRef =
@@ -126,14 +149,10 @@ class _PhotoUploadState extends State<PhotoUpload> {
       final imageUrl = await taskSnapshot.ref.getDownloadURL();
       url = imageUrl.toString();
       print("Image url: " + url);
-
-      // Guardar el post a firebase database: database realtime
       saveToDatabase(url);
 
-      // Regresar a Home
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
-      // ignore: use_build_context_synchronously
+      // Cerrar el dialogo y regresar a Home
+      Navigator.pop(context); // Cerrar el dialogo
       Navigator.pushReplacementNamed(context, '/puente');
     }
   }

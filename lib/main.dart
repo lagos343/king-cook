@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kingcook/puente.dart';
+import 'package:kingcook/screens/change_password.dart';
 import 'package:kingcook/screens/home_screen.dart';
 import 'package:kingcook/screens/login_page.dart';
 import 'package:kingcook/screens/photo_upload.dart';
@@ -42,5 +43,6 @@ class MyApp extends StatelessWidget {
     '/userview': (context) => const Puente(
           namelocal: 'userview',
         ),
+    'changepassword': (context) => const CambiarContrasenaScreen(),
   };
 }
