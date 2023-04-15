@@ -18,6 +18,11 @@ class _PhotoUploadState extends State<PhotoUpload> {
   var sampleImage; // imagen
   // ignore: prefer_typing_uninitialized_variables
   late var _myValue; // descripcion
+  late var ingrediente1;
+  late var ingrediente2;
+  late var ingrediente3;
+  late var ingrediente4;
+  late var pasos;
   late String url; // url de la imagen
   final formKey = GlobalKey<FormState>();
 
@@ -85,6 +90,95 @@ class _PhotoUploadState extends State<PhotoUpload> {
                   if (value != null) {
                     // Verificar si value es nulo antes de asignarlo
                     _myValue = value;
+                  }
+                },
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              TextFormField(
+                decoration:
+                    InputDecoration(labelText: "Ingrediente 1 de la receta"),
+                validator: (value) {
+                  return value != null && value.isEmpty
+                      ? "Ingrese el ingrediente 1 descripcion de la receta"
+                      : null;
+                },
+                onSaved: (value) {
+                  if (value != null) {
+                    // Verificar si value es nulo antes de asignarlo
+                    ingrediente1 = value;
+                  }
+                },
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              TextFormField(
+                decoration:
+                    InputDecoration(labelText: "Ingrediente 2 de la receta"),
+                validator: (value) {
+                  return value != null && value.isEmpty
+                      ? "Ingrese el ingrediente 2 descripcion de la receta"
+                      : null;
+                },
+                onSaved: (value) {
+                  if (value != null) {
+                    // Verificar si value es nulo antes de asignarlo
+                    ingrediente2 = value;
+                  }
+                },
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              TextFormField(
+                decoration:
+                    InputDecoration(labelText: "Ingrediente 3 de la receta"),
+                validator: (value) {
+                  return value != null && value.isEmpty
+                      ? "Ingrese el ingrediente 3 descripcion de la receta"
+                      : null;
+                },
+                onSaved: (value) {
+                  if (value != null) {
+                    // Verificar si value es nulo antes de asignarlo
+                    ingrediente3 = value;
+                  }
+                },
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              TextFormField(
+                decoration:
+                    InputDecoration(labelText: "Ingrediente 4 de la receta"),
+                validator: (value) {
+                  return value != null && value.isEmpty
+                      ? "Ingrese el ingrediente 4 descripcion de la receta"
+                      : null;
+                },
+                onSaved: (value) {
+                  if (value != null) {
+                    // Verificar si value es nulo antes de asignarlo
+                    ingrediente4 = value;
+                  }
+                },
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              TextFormField(
+                decoration: InputDecoration(labelText: "Pasos de la receta"),
+                validator: (value) {
+                  return value != null && value.isEmpty
+                      ? "Ingrese los pasos de la receta"
+                      : null;
+                },
+                onSaved: (value) {
+                  if (value != null) {
+                    // Verificar si value es nulo antes de asignarlo
+                    pasos = value;
                   }
                 },
               ),
@@ -175,7 +269,12 @@ class _PhotoUploadState extends State<PhotoUpload> {
       "date": date,
       "time": time,
       "user": Usuarios.email,
-      "name": Usuarios.nombre
+      "name": Usuarios.nombre,
+      "ingre1": ingrediente1,
+      "ingre2": ingrediente2,
+      "ingre3": ingrediente3,
+      "ingre4": ingrediente4,
+      "pasos": pasos
     };
 
     ref.collection("Posts").add(data);

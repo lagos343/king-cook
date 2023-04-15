@@ -121,11 +121,13 @@ class _Puente extends State<Puente> with SingleTickerProviderStateMixin {
 Widget rutamenu(String name) {
   switch (name) {
     case 'home':
-      return HomePage();
+      return HomePage(
+        ismyRecipes: false,
+      );
       break;
 
-    case 'photoupload':
-      return PhotoUpload();
+    case 'misrecetas':
+      return HomePage(ismyRecipes: true);
       break;
 
     case 'userview':
@@ -133,6 +135,8 @@ Widget rutamenu(String name) {
       break;
 
     default:
-      return HomePage();
+      return HomePage(
+        ismyRecipes: false,
+      );
   }
 }

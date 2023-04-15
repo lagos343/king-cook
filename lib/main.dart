@@ -44,5 +44,6 @@ class MyApp extends StatelessWidget {
           namelocal: 'userview',
         ),
     'changepassword': (context) => const CambiarContrasenaScreen(),
+    '/misrecetas': (context) => const Puente(namelocal: 'misrecetas')
   };
 }
